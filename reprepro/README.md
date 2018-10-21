@@ -1,16 +1,16 @@
 # Debian APT package repository docker image
 
 ## Original image
-This image is a fork of the *iomoss* reprepro image available [here](https://bitbucket.org/iomoss/docker-files). Main changes introduce multiple distribution support and some repo helpers. As the original image, this should be considered as in-house deb package server, not designed to fulfill the role of a full repository.
+This image is a fork of the *iomoss* reprepro image available [here](https://bitbucket.org/iomoss/docker-files). Main changes introduce multiple distribution support and some repo helpers. As the original image, this should be considered as internal deb package server, not designed to fulfill the role of a full repository.
 
-## Building the image (in-house)
+## Building the image
 ```bash
 $ git clone https://github.com/chodak166/dockerfiles
 $ cd dockerfiles/reprepro
 $ docker build -t reprepro .
 ```
 
-## Running (stand-alone)
+## Running
 ### Interactive mode
 You can start the server as;
 ```bash
