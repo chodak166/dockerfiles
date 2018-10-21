@@ -1,0 +1,19 @@
+server {
+  listen 80;
+
+  access_log /var/log/nginx/packages-access.log;
+  error_log /var/log/nginx/packages-error.log;
+
+  location / {
+    root /var/www/repos/apt/debian;
+    index index.html;
+  }
+
+  location ~ /(.*)/conf {
+    deny all;
+  }
+
+  location ~ /(.*)/db {
+    deny all;
+  }
+}

@@ -1,0 +1,9 @@
+Origin: !!!PROJECT_NAME_HERE!!!
+Label: !!!PROJECT_NAME_HERE!!!
+Codename: !!!CODE_NAME_HERE!!!
+Architectures: amd64 i386 armhf multiarch
+Components: main
+Description: Apt repository for !!!PROJECT_NAME_HERE!!!
+DebOverride: override.!!!CODE_NAME_HERE!!!
+DscOverride: override.!!!CODE_NAME_HERE!!!
+SignWith: !!!KEY_ID_HERE!!!

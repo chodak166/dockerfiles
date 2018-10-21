@@ -1,0 +1,17 @@
+<html>
+<head>
+</head>
+<body>
+    <div style="text-align:center">
+        Add our GPG key to trusted;
+        <br/>   
+        <textarea readonly rows="4" cols="120">wget -O - http://!!!HOST_NAME_HERE!!!:!!!HOST_PORT_HERE!!!/public.gpg.key | sudo apt-key add - </textarea>
+        <br/>
+
+        Add the repository to sources.list.d;
+        <br/>
+        <textarea readonly rows="4" cols="120">echo "deb http://!!!HOST_NAME_HERE!!!:!!!HOST_PORT_HERE!!!/ !!!CODE_NAME_HERE!!! main" | sudo tee /etc/apt/sources.list.d/!!!HOST_NAME_HERE!!!.list </textarea>
+        <br/>
+    </div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+Key-Type: RSA
+Key-Length: 2048
+Subkey-Type: RSA
+Expire-Date: 0
+%no-protection

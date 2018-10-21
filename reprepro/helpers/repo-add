@@ -1,0 +1,49 @@
+#!/bin/bash
+
+source /etc/repo.config
+
+keyId=$(sudo -u debian gpg --list-keys | tail -2 | sed "s/.*\/\(.*\)\s.*/\1/g")
+
+echo -n "Codename (eg. xenial): "; read codename
+echo -n "Component (eg. main): "; read component
+echo -n "Architectures (space separated, eg. amd64 all): "; read archs
+
+echo "-----------"
+echo "Codename: $codename"
+echo "Component: $component"
+echo "Architectures: $archs"
+echo "Key ID: $keyId"
+
+echo -e "\nCorrect? (y/N)"; read c
+
+if [ "$c" == "y" ]
+then
+
+	for arch in ${archs[@]}
+	do
+		mkdir -p "$INCOMING_DIR/$codename/$component/$arch"
+	done
+
+	echo "Structures in $INCOMING_DIR created"
+
+	echo "
+Origin: $PROJECT_NAME
+Label: $PROJECT_NAME
+Codename: $codename
+Architectures: $archs
+Components: main
+Description: Apt repository for $PROJECT_NAME
+DebOverride: override.$codename
+DscOverride: override.$codename
+SignWith: $keyId
+" >> $REPO_BASE_DIR/conf/distributions
+
+	echo "verbose
+basedir $REPO_BASE_DIR
+ask-passphrase
+" > $REPO_BASE_DIR/conf/override.$codename
+
+
+echo "$REPO_BASE_DIR/conf updated"
+
+fi

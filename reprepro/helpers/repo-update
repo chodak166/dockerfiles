@@ -1,0 +1,43 @@
+#!/bin/bash
+
+source /etc/repo.config
+
+DEFAULT="\e[39m"
+GREEN="\e[32m"
+RED="\e[31m"
+
+echo "Scanning APT incoming directory: $INCOMING_DIR"
+cd "$INCOMING_DIR"
+
+while read -rd $'\0' deb
+do 
+	echo "Package: $deb"; 
+	
+	origIFS="$IFS"
+	IFS=/
+	split=($deb)
+	IFS="$origIFS"
+
+	if [ ${#split[@]} -ne 5 ]
+	then
+		echo "Wrong package path, skipping"
+		continue
+	fi
+
+	codename=${split[1]}
+	component=${split[2]}
+	arch=${split[3]}
+	file=${split[4]}
+
+	echo "Codename: $codename"
+	echo "Component: $component"
+	echo "Architecture: $arch"
+
+	echo "Running reprepro..."
+
+	reprepro -b "$REPO_BASE_DIR" -C $component -A $arch includedeb $codename "$deb" \
+		&& (echo -e "\n${GREEN}Package included!${DEFAULT}\n"; echo "$deb") \
+		|| (echo -e "\n${RED}Package not included${DEFAULT}\n(use repo-clean to clean up incoming directory)\n")
+
+done < <(find . -type f -iname "*.deb" -print0)
+

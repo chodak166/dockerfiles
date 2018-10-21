@@ -1,0 +1,12 @@
+#!/bin/bash
+
+source /etc/repo.config
+
+echo "Scanning APT incoming directory: $INCOMING_DIR"
+cd "$INCOMING_DIR"
+
+while read -rd $'\0' deb
+do 
+	rm -v "$deb"
+done < <(find . -type f -iname "*.deb" -print0)
+
