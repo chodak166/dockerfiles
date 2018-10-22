@@ -15,7 +15,7 @@ $ docker build -t reprepro .
 You can start the server as;
 ```bash
 $ docker run \
--v ~/apt:/srv/ \
+-v ~/apt/:/srv/ \
 -v /dev/urandom:/dev/random \
 -p 8080:80 \
 -p 2222:22 \
