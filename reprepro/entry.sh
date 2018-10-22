@@ -4,6 +4,7 @@
 #TODO: add colored output
 #TODO: test re-run
 #TODO: get rid of batch mode?
+#TODO: add package remove helper
 
 # SSH authorized keys
 AUTHORIZED_KEYS=/home/debian/.ssh/authorized_keys
