@@ -49,8 +49,8 @@ The below assumes that you are in the folder of your `.deb` package.
 The example is based upon uploading `mypackage.deb` to `aptrepo.lan` with codename `bionic`, component `main` nad `amd64` architecture.
 
 ```bash
-$ scp -P SSH_PORT mypackage.deb debian@$aptrepo.lan:/apt/bionic/main/amd64/
-$ ssh -p SSH_PORT debian@$HOSTNAME "repo-update"
+$ scp -P SSH_PORT mypackage.deb debian@aptrepo.lan:/apt/bionic/main/amd64/
+$ ssh -p SSH_PORT debian@aptrepo.lan "repo-update"
 ```
 
 The `repo-update` will scan the `/apt` incoming directory and use codename, component and arch directory names to update the actual repository. Many `.deb` packages can be uploaded before running `repo-update` script. 
