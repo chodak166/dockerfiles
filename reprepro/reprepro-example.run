@@ -1,0 +1,12 @@
+#!/bin/bash
+
+docker run \
+       --hostname localhost \
+       --publish 12443:443 --publish 12080:80 --publish 12022:22 \
+       --name apt-repo \
+       --restart always \
+       -v /var/docker/apt/srv:/srv \
+       -v /var/docker/apt/repos:/var/www/repos \
+       -v /dev/urandom:/dev/random \
+       -it \
+       reprepro
