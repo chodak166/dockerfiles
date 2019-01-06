@@ -12,7 +12,7 @@ $ docker build -t reprepro .
 
 ## Running
 ### Interactive mode
-You can start the server as;
+You can start the server as:
 ```bash
 $ docker run \
 -v ~/apt/:/srv/ \
